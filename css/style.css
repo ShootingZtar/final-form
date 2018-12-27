@@ -1,0 +1,23 @@
+html, body {
+    margin: 0;
+    height: 100%
+}
+
+nav{
+    position: fixed;
+    z-index: 100;
+}
+
+div#sidebar {
+    position: absolute;
+    width: 230px;
+    top: 0;
+    left: 0;
+    padding-top:  56px;
+    min-height: 100%;
+    z-index: 99;
+}
+
+div#content {
+    margin-left: 230px;
+}
