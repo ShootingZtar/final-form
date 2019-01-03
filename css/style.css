@@ -20,7 +20,5 @@ div#sidebar {
 
 div#content {
     background-color: #fbfbff;
-    margin-left: 230px;
     padding-top: 10px;
-    /* min-height: 1000px; */
 }
