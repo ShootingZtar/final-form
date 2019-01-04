@@ -26,10 +26,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item" v-bind:class="{ active: whosActive=='form'}">
-                        <a class="nav-link" href="#">Forms</a>
+                        <a class="nav-link" href="#" @click="redirect('form')">Forms</a>
                     </li>
                     <li class="nav-item" v-bind:class="{ active: whosActive=='doc'}">
-                        <a class="nav-link" href="#">Document</a>
+                        <a class="nav-link" href="#" @click="redirect('doc')">Document</a>
                     </li>
                 </ul>
             </div>
@@ -37,37 +37,52 @@
 
         <div id="content" class="w-100">
             <div class="container">
-                <!-- <form>
-                    <div class="form-group row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
-                        <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="email@example.com">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                        <div class="col-sm-10">
-                            <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-                        </div>
-                    </div>
-                </form> -->
-
                 <div class="row">
                     <div class="col-sm-12">
-                        <button class="btn btn-dark btn-block" @click="addRow">Add row</button>
+                        <button type="button" class="btn btn-dark btn-block" data-toggle="modal" data-target="#myModal">Add
+                            Form</button>
                     </div>
                     <br />
-                    <br />
 
-                    <div class="input-group mb-3 col-sm-12" v-for="(input, index) in inputs">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Column Name {{ index + 1 }}.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Create New Form</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+
+                        <div class="col-sm-12">
+                            <button class="btn btn-outline-primary btn-block" @click="addRow">Add row</button>
                         </div>
-                        <input type="text" class="form-control" placeholder="" aria-label="Place Holder"
-                            aria-describedby="basic-addon2" v-model="input.fieldName">
-                        <div class="input-group-append">
-                            <button class="btn btn-danger" type="button" @click="deleteRow(index)">Delete</button>
+                        <br />
+
+                        <div class="input-group mb-3 col-sm-12" v-for="(input, index) in inputs">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><span class="d-none d-sm-block">Column Name</span> {{ index + 1 }}.</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="" aria-label="Place Holder"
+                                aria-describedby="basic-addon2" v-model="input.fieldName">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-danger" type="button" @click="deleteRow(index)">Delete</button>
+                            </div>
                         </div>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success">Save</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
 
                 </div>
@@ -102,7 +117,10 @@
                 },
                 deleteRow(index) {
                     this.inputs.splice(index, 1)
-                }
+                },
+                redirect(target) {
+                    alert('go to ' + target)
+                } 
             }
         });
     </script>
